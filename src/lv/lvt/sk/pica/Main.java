@@ -1,7 +1,10 @@
 package lv.lvt.sk.pica;
 
+import lv.lvt.sk.pica.ui.ViewController;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ViewController viewController = new ViewController();
+
     }
 }
