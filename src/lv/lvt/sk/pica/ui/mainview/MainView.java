@@ -62,16 +62,36 @@ public class MainView extends JPanel {
             Pizza pizza = pizzas.get(i);
             JPanel currPizzaPanel = new JPanel();
             currPizzaPanel.setLayout(new BoxLayout(currPizzaPanel, BoxLayout.X_AXIS));
-            currPizzaPanel.setPreferredSize(new Dimension(400, 100));
+            JPanel helperPanel = new JPanel();
+            //helperPanel.setLayout(new BoxLayout(helperPanel, BoxLayout.X_AXIS));
+            helperPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+            currPizzaPanel.add(helperPanel);
 
             JLabel pizzaImg = new JLabel(pizza.getImage());
-            JLabel pizzaName = new JLabel(pizza.getName());
-            JLabel price = new JLabel(pizza.getPrice().toString());
+            pizzaImg.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-            currPizzaPanel.add(pizzaImg);
-            currPizzaPanel.add(pizzaName);
-            currPizzaPanel.add(price);
+            JLabel pizzaName = new JLabel(pizza.getName() + " ");
+            pizzaName.setAlignmentY(Component.CENTER_ALIGNMENT);
 
+            JLabel price = new JLabel(pizza.getPrice().toString() + " $");
+            price.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+            //setting fonts
+            Font font = new Font( pizzaName.getFont().getFontName(), Font.BOLD, 20);
+            pizzaName.setFont(font);
+            price.setFont(font);
+
+            helperPanel.add(pizzaImg);
+            helperPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add some spacing between the components
+            helperPanel.add(pizzaName);
+            helperPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add some spacing between the components
+            helperPanel.add(price);
+
+            helperPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+            //TODO make the height scaled based on image or center it properly
+            currPizzaPanel.setPreferredSize(new Dimension(380, 100));
             currPizzaPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
             pizzaPanel.add(currPizzaPanel);
