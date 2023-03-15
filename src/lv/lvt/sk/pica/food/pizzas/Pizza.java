@@ -6,59 +6,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Stack;
 
-public class Pizza {
-    String name;
-    Double price=0.0;
-    ImageIcon image;
+public class Pizza extends Item{
     Stack<Item> items = new Stack<>();
 
     public Pizza(String name) {
-        this.name = name;
-        image = new ImageIcon("./resources/404.png");
-        System.out.println();
+        super(name, 0.0, "", new ImageIcon("./resources/404.png"));
     }
     public Pizza(String name, ImageIcon image) {
-        this.name = name;
-        this.image = image;
+        super(name, 0.0, "", image);
     }
     public void addTopping(Item item) {
         items.push(item);
-        price += item.getPrice();
+        super.addToPrice(item.getPrice());
+        super.setDesc(createDesc());
     }
     public void addTopping(Item[] items) {
         for (Item item : items) {
             addTopping(item);
-            price += item.getPrice();
         }
+        super.setDesc(createDesc());
     }
     public Stack<Item> getToppings() {
         return items;
     }
 
-
-    public ImageIcon getImage() {
-        return image;
-    }
-
-    public void setImage(ImageIcon image) {
-        this.image = image;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 
     public Stack<Item> getItems() {
         return items;
@@ -66,5 +37,14 @@ public class Pizza {
 
     public void setItems(Stack<Item> items) {
         this.items = items;
+    }
+
+    private String createDesc() {
+        String itemsString = "<html>";
+        for (Item item : items) {
+            itemsString += item.getName() + ", ";
+        }
+        itemsString=itemsString.substring(0, itemsString.length() - 2);
+        return itemsString+"</html>";
     }
 }
