@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PizzaPanel extends JPanel {
 
-    public PizzaPanel(MenuItems menuItems) {
+    public PizzaPanel(MainView mainView,MenuItems menuItems) {
         System.out.println(menuItems.pizzas.size());
 
         for (Pizza pizza : menuItems.pizzas) {
@@ -74,10 +74,8 @@ public class PizzaPanel extends JPanel {
                     if (!buttonPanel.isVisible()) {
                         buttonPanel.setVisible(true);
                     }
-
                     buttonPanel.repaint();
                 }
-
                 public void mouseExited(MouseEvent evt) {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
@@ -96,7 +94,22 @@ public class PizzaPanel extends JPanel {
                     }
                     price.setText(pizza.getPrice() * 1.3 + " $");
                 }
-
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    if (buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(false);
+                    }
+                    price.setText(pizza.getPrice() + " $");
+                }
+            });
+            size50.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    if (!buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(true);
+                    }
+                    price.setText(pizza.getPrice() * 1.5 + " $");
+                }
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (buttonPanel.isVisible()) {
@@ -106,21 +119,28 @@ public class PizzaPanel extends JPanel {
                 }
             });
 
+            size20.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    Pizza item = (Pizza) pizza.clone();
+                    //dont need to set size because its 20 by default
+                    mainView.addToCart(pizza);
+                }
+            });
+            size30.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    Pizza item = (Pizza) pizza.clone();
+                    item.setSize(30);
+                    mainView.addToCart(item);
+                }
+            });
             size50.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseEntered(MouseEvent e) {
-                    if (!buttonPanel.isVisible()) {
-                        buttonPanel.setVisible(true);
-                    }
-                    price.setText(pizza.getPrice() * 1.5 + " $");
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    if (buttonPanel.isVisible()) {
-                        buttonPanel.setVisible(false);
-                    }
-                    price.setText(pizza.getPrice() + " $");
+                public void mouseClicked(MouseEvent e) {
+                    Pizza item = (Pizza) pizza.clone();
+                    item.setSize(50);
+                    mainView.addToCart(item);
                 }
             });
 

@@ -3,7 +3,7 @@ package lv.lvt.sk.pica.food;
 import javax.swing.*;
 import java.awt.*;
 
-public class Item {
+public class Item implements Cloneable{
     private String name;
     private double price;
     private String desc;
@@ -55,5 +55,15 @@ public class Item {
 
     public void addToPrice(double price) {
         this.price += price;
+    }
+
+    @Override
+    public Item clone() {
+        try {
+            Item clone = (Item) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
