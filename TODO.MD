@@ -8,3 +8,4 @@
 - [ ] Add more products
 - [ ] generate the images dynamically
 - [ ] Allow custom pizza
+- [ ] Use branches for git
