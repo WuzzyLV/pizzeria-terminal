@@ -1,5 +1,7 @@
 package lv.lvt.sk.pica;
 
+import lv.lvt.sk.pica.food.pizzas.PeperoniPizza;
+import lv.lvt.sk.pica.food.pizzas.Pizza;
 import lv.lvt.sk.pica.ui.ViewController;
 
 public class Main {
@@ -7,4 +9,5 @@ public class Main {
         ViewController viewController = new ViewController();
 
     }
+
 }

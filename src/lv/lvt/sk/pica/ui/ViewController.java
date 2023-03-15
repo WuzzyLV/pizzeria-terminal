@@ -18,6 +18,7 @@ public class ViewController extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(650, 750);
+        setResizable(false);
 
         showMainView();
     }

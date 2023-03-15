@@ -73,13 +73,17 @@ public class MainView extends JPanel {
     public String getLog() {
         String log = "";
         for (Item item : cartItems) {
-            log += item.getName() +", " + item.getPrice() + " $" + "/n";
+            log += item.getName() +", " + item.getPrice() + " $" + " /n ";
         }
         return log;
     }
     public void addToCart(Item item) {
         cartItems.add(item);
         pricePanel.setPriceLabel(getCartPrice());
-        pricePanel.setProductLog(getLog());
+        pricePanel.setProductLog(cartItems);
+    }
+
+    public void confirmOrder() {
+        new ConfirmWindow(this);
     }
 }
