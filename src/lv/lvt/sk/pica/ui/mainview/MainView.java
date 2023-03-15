@@ -5,6 +5,7 @@ import lv.lvt.sk.pica.ui.ViewController;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -111,24 +112,64 @@ public class MainView extends JPanel {
             currPizzaPanel.add(buttonPanel);
             buttonPanel.setVisible(true);
 
-            currPizzaPanel.addMouseListener(new MouseAdapter() {
+            //enter leave listener for whole panel
+            MouseAdapter genericAdapter =new MouseAdapter() {
                 public void mouseEntered(MouseEvent evt) {
-                    System.out.println("moved in");
-                    //buttonPanel.setVisible(true);
+                    if (!buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(true);
+                    }
+
                     buttonPanel.repaint();
                 }
                 public void mouseExited(MouseEvent evt) {
-                    System.out.println("moved out");
-                    //buttonPanel.setVisible(false);
+                    if (buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(false);
+                    }
                     currPizzaPanel.repaint();
+                }
+            };
+            currPizzaPanel.addMouseListener(genericAdapter);
+            size20.addMouseListener(genericAdapter);
+            //listener for each buttons to set price etc
+            size30.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    if (!buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(true);
+                    }
+                    price.setText(pizza.getPrice()*1.3+ " $");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    if (buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(false);
+                    }
+                    price.setText(pizza.getPrice() + " $");
+                }
+            });
+
+            size50.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    if (!buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(true);
+                    }
+                    price.setText(pizza.getPrice()*1.5+ " $");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    if (buttonPanel.isVisible()) {
+                        buttonPanel.setVisible(false);
+                    }
+                    price.setText(pizza.getPrice() + " $");
                 }
             });
 
             pizzaPanel.add(currPizzaPanel);
         }
-
     }
-
 
 
 
