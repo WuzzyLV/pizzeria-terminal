@@ -9,6 +9,8 @@ import lv.lvt.sk.pica.utils.WrapLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -60,6 +62,19 @@ public class CustomPizzaView extends JPanel {
 
         toppingsModel=new DefaultListModel<>();
         toppingsList = new JList<>(toppingsModel);
+        toppingsList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2) {
+                    int index = toppingsList.locationToIndex(e.getPoint());
+                    addedItems.remove(index);
+                    toppingsModel.remove(index);
+                    if (addedItems.size()==0) confirm.setEnabled(false);
+                    updatePrice();
+                }
+            }
+        });
         toppingsList.setFont(font);
 
         cancel= new JButton("Cancel");

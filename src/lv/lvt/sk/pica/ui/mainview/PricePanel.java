@@ -5,6 +5,8 @@ import lv.lvt.sk.pica.utils.PriceUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class PricePanel extends JPanel {
@@ -36,6 +38,16 @@ public class PricePanel extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0, 20)));
 
         productLog = new JList();
+        productLog.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2) {
+                    int index = productLog.locationToIndex(e.getPoint());
+                    mainView.removeFromCart(mainView.getCart().get(index));
+                }
+            }
+        });
         productLog.setAlignmentX(Component.CENTER_ALIGNMENT);
         JScrollPane scrollPane = new JScrollPane(productLog);
         scrollPane.setMaximumSize(new Dimension(200, 450));

@@ -8,6 +8,6 @@
 - [x] Add more products
 - [x] Add images
 - [ ] generate the images dynamically
-- [ ] Allow custom pizza
-- [ ] right click remove from JList
+- [x] Allow custom pizza
+- [x] right click remove from JList
 - [x] Use branches for git
