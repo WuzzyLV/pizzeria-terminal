@@ -48,12 +48,12 @@ public class MainView extends JPanel {
         pizzaPanelScroll = new JScrollPane(pizzaPanel);
         pizzaPanelScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        sides= new SidesPanel(this, mitems);
+        sides= new ItemPanel(this, mitems.sides);
         sidesPanelScroll = new JScrollPane(sides);
         sidesPanelScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 
-        extras = new ExtrasPanel(this, mitems);
+        extras = new ItemPanel(this, mitems.extras);
         extrasPanelScroll = new JScrollPane(extras);
         extrasPanelScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 

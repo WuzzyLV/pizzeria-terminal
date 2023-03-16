@@ -42,17 +42,6 @@ public class Pizza extends Item{
         this.items = items;
     }
 
-    public void setSize(double size) {
-        this.size = size;
-        BigDecimal newPrice = BigDecimal.valueOf(getPrice()).multiply(BigDecimal.valueOf(size / 100 + 1));
-        setPrice(newPrice.setScale(2, RoundingMode.HALF_UP).doubleValue());
-        System.out.println(getPrice());
-    }
-
-    public double getSize() {
-        return size;
-    }
-
     private String createDesc() {
         String itemsString = "<html>";
         for (Item item : items) {

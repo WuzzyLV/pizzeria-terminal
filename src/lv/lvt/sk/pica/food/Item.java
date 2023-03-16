@@ -2,12 +2,16 @@ package lv.lvt.sk.pica.food;
 
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Item implements Cloneable{
     private String name;
     private double price;
     private String desc;
     private ImageIcon image;
+
+    double size = 20;
 
     public Item(String name, double price, String desc) {
         this.name = name;
@@ -56,6 +60,17 @@ public class Item implements Cloneable{
 
     public void addToPrice(double price) {
         this.price += price;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+        BigDecimal newPrice = BigDecimal.valueOf(getPrice()).multiply(BigDecimal.valueOf(size / 100 + 1));
+        setPrice(newPrice.setScale(2, RoundingMode.HALF_UP).doubleValue());
+        System.out.println(getPrice());
+    }
+
+    public double getSize() {
+        return size;
     }
 
     @Override

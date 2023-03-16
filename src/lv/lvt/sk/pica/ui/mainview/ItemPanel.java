@@ -2,7 +2,6 @@ package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.Item;
 import lv.lvt.sk.pica.food.sides.Side;
-import lv.lvt.sk.pica.ui.MenuItems;
 import lv.lvt.sk.pica.utils.PriceUtils;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
@@ -12,8 +11,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class SidesPanel extends JPanel {
-    public SidesPanel(MainView mainView, ArrayList items) {
+public class ItemPanel extends JPanel {
+    public ItemPanel(MainView mainView, ArrayList items) {
         this.setLayout(new WrapLayout());
 
         for (int i = 0; i < items.size(); i++) {
@@ -124,7 +123,7 @@ public class SidesPanel extends JPanel {
             size20.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Side clickedItem = (Side) item.clone();
+                    Item clickedItem = item.clone();
                     //dont need to set size because its 20 by default
                     mainView.addToCart(clickedItem);
                 }
@@ -132,7 +131,7 @@ public class SidesPanel extends JPanel {
             size30.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Side clickedItem = (Side) item.clone();
+                    Item clickedItem = item.clone();
                     clickedItem.setSize(30);
                     mainView.addToCart(clickedItem);
                 }
@@ -140,7 +139,7 @@ public class SidesPanel extends JPanel {
             size50.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Side clickedItem = (Side) item.clone();
+                    Item clickedItem = item.clone();
                     clickedItem.setSize(50);
                     mainView.addToCart(clickedItem);
                 }
