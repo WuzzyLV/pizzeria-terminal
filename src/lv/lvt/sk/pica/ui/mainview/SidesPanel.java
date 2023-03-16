@@ -1,8 +1,7 @@
 package lv.lvt.sk.pica.ui.mainview;
 
-import lv.lvt.sk.pica.food.Item;
-import lv.lvt.sk.pica.food.pizzas.Pizza;
 import lv.lvt.sk.pica.food.sides.Side;
+import lv.lvt.sk.pica.ui.MenuItems;
 import lv.lvt.sk.pica.utils.PriceUtils;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
@@ -12,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SidesPanel extends JPanel {
-    public SidesPanel(MainView mainView,MenuItems menuItems) {
+    public SidesPanel(MainView mainView, MenuItems menuItems) {
         this.setLayout(new WrapLayout());
 
         for (Side item : menuItems.sides) {

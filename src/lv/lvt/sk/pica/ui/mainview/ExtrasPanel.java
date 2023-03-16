@@ -1,7 +1,7 @@
 package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.extras.Extra;
-import lv.lvt.sk.pica.food.sides.Side;
+import lv.lvt.sk.pica.ui.MenuItems;
 import lv.lvt.sk.pica.utils.PriceUtils;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
@@ -18,6 +18,7 @@ public class ExtrasPanel extends JPanel {
             JPanel currPanel = new JPanel();
             currPanel.setLayout(new BoxLayout(currPanel, BoxLayout.Y_AXIS));
             currPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            currPanel.setSize(new Dimension(400, 100));
 
             JPanel helperPanel = new JPanel();
             helperPanel.setLayout(new BoxLayout(helperPanel, BoxLayout.X_AXIS));

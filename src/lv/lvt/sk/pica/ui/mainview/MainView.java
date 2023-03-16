@@ -1,18 +1,14 @@
 package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.Item;
-import lv.lvt.sk.pica.food.pizzas.Pizza;
+import lv.lvt.sk.pica.ui.MenuItems;
 import lv.lvt.sk.pica.ui.ViewController;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainView extends JPanel {
     ViewController viewController;
@@ -32,7 +28,7 @@ public class MainView extends JPanel {
 
     public MainView(ViewController controller) {
         this.viewController = controller;
-        mitems = new MenuItems();
+        mitems = viewController.getMenuItems();
 
         setLayout(new WrapLayout());
 
@@ -86,6 +82,12 @@ public class MainView extends JPanel {
     }
     public void addToCart(Item item) {
         cartItems.add(item);
+        pricePanel.setPriceLabel(getCartPrice());
+        pricePanel.setProductLog(cartItems);
+    }
+
+    public void removeFromCart(Item item) {
+        cartItems.remove(item);
         pricePanel.setPriceLabel(getCartPrice());
         pricePanel.setProductLog(cartItems);
     }

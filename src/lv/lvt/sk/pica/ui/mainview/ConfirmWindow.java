@@ -2,6 +2,7 @@ package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.Order;
 import lv.lvt.sk.pica.OrderManager;
+import lv.lvt.sk.pica.food.pizzas.Delivery;
 import lv.lvt.sk.pica.utils.PriceUtils;
 
 import javax.swing.*;
@@ -24,25 +25,30 @@ public class ConfirmWindow extends JFrame {
         panel.add(nameLab);
         panel.add(nameField);
 
+        Button confirmButton = new Button(PriceUtils.formatPrice(mainView.getCartPrice()));
+
         JLabel addressLabel = new JLabel("Adress:");
         addressLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         JTextField addressField = new JTextField(1);
         addressField.setMaximumSize(new Dimension(250,20));
         addressField.setEnabled(false);
+        Delivery delivery = new Delivery();
         JCheckBox addressCheckBox = new JCheckBox("Delivery?");
         addressCheckBox.addActionListener(e -> {
             if (addressCheckBox.isSelected()) {
                 addressField.setEnabled(true);
+                mainView.addToCart(delivery);
             } else {
                 addressField.setEnabled(false);
                 addressField.setText("");
+                mainView.removeFromCart(delivery);
             }
+            confirmButton.setLabel(PriceUtils.formatPrice(mainView.getCartPrice()));
         });
         panel.add(addressLabel);
         panel.add(addressField);
         panel.add(addressCheckBox);
 
-        Button confirmButton = new Button(PriceUtils.formatPrice(mainView.getCartPrice()));
         confirmButton.setBackground(new Color(131, 171, 131));
         confirmButton.setFont(new Font(nameLab.getFont().getFontName(), Font.BOLD, 40));
         confirmButton.addActionListener(e -> {
