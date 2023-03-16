@@ -1,6 +1,5 @@
 package lv.lvt.sk.pica.ui.mainview;
 
-import lv.lvt.sk.pica.food.Item;
 import lv.lvt.sk.pica.food.extras.Cola;
 import lv.lvt.sk.pica.food.extras.Extra;
 import lv.lvt.sk.pica.food.extras.Fanta;
@@ -9,7 +8,7 @@ import lv.lvt.sk.pica.food.pizzas.MargheritaPizza;
 import lv.lvt.sk.pica.food.pizzas.PeperoniPizza;
 import lv.lvt.sk.pica.food.pizzas.Pizza;
 import lv.lvt.sk.pica.food.sides.Fries;
-import lv.lvt.sk.pica.food.sides.OnionRings;
+import lv.lvt.sk.pica.food.sides.IceCream;
 import lv.lvt.sk.pica.food.sides.Side;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class MenuItems {
         //Sides
         sides=new ArrayList<>();
         sides.add(new Fries());
-        sides.add(new OnionRings());
+        sides.add(new IceCream());
         //Extras
         extras=new ArrayList<>();
         extras.add(new Cola());

@@ -4,6 +4,6 @@ import lv.lvt.sk.pica.food.Item;
 
 public class Fries extends Side {
     public Fries() {
-        super("Fries", 2, "Fries with salt");
+        super("Fries", 2, "Fries with salt", "fries");
     }
 }

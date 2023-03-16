@@ -13,6 +13,10 @@ public class Extra extends Item {
         super(name, price, desc);
     }
 
+    public Extra(String name, double price, String desc, String imageName) {
+        super(name, price, desc, imageName);
+    }
+
     public void setSize(double size) {
         this.size = size;
         BigDecimal newPrice = BigDecimal.valueOf(getPrice()).multiply(BigDecimal.valueOf(size / 100 + 1));

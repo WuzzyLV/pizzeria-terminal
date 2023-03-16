@@ -13,6 +13,10 @@ public class Side extends Item {
         super(name, price, description);
     }
 
+    public Side(String name, double price, String description, String imageName) {
+        super(name, price, description, imageName);
+    }
+
     public void setSize(double size) {
         this.size = size;
         BigDecimal newPrice = BigDecimal.valueOf(getPrice()).multiply(BigDecimal.valueOf(size / 100 + 1));

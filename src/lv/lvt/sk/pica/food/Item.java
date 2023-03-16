@@ -15,11 +15,11 @@ public class Item implements Cloneable{
         this.desc = desc;
         image=new ImageIcon("./out/production/Allis_Pica/lv/lvt/sk/pica/resources/missing.png");
     }
-    public Item(String name, double price, String desc, ImageIcon image) {
+    public Item(String name, double price, String desc, String imageName) {
         this.name = name;
         this.price = price;
         this.desc = desc;
-        this.image = image;
+        image=new ImageIcon("./out/production/Allis_Pica/lv/lvt/sk/pica/resources/"+imageName+".png");
     }
 
     public String getName() {

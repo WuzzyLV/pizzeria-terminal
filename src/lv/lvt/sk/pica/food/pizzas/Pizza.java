@@ -14,9 +14,9 @@ public class Pizza extends Item{
     double size=20;
 
     public Pizza(String name) {
-        super(name, 0.0, "");
+        super(name, 0.0, "", "pizzabox");
     }
-    public Pizza(String name, ImageIcon image) {
+    public Pizza(String name, String image) {
         super(name, 0.0, "", image);
     }
     public void addTopping(Item item) {
