@@ -5,7 +5,7 @@
 - [ ] Make order history viewable
 - [ ] Decimal format for price
 - [ ] Improve Confirm order menu
-- [ ] Add more products
+- [x] Add more products
 - [ ] generate the images dynamically
 - [ ] Allow custom pizza
-- [ ] Use branches for git
+- [x] Use branches for git

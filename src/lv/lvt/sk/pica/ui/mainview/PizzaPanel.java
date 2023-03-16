@@ -1,6 +1,7 @@
 package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.pizzas.Pizza;
+import lv.lvt.sk.pica.utils.PriceUtils;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
 import javax.swing.*;
@@ -32,7 +33,7 @@ public class PizzaPanel extends JPanel {
             JLabel tops = new JLabel(pizza.getDesc());
             tops.setPreferredSize(new Dimension(175, 40));
 
-            JLabel price = new JLabel(pizza.getPrice() + " $");
+            JLabel price = new JLabel(PriceUtils.formatPrice(pizza.getPrice()));
             price.setAlignmentY(Component.CENTER_ALIGNMENT);
 
             //setting fonts
@@ -91,14 +92,15 @@ public class PizzaPanel extends JPanel {
                     if (!buttonPanel.isVisible()) {
                         buttonPanel.setVisible(true);
                     }
-                    price.setText(pizza.getPrice() * 1.3 + " $");
+                    price.setText(PriceUtils.formatPrice(pizza.getPrice() * 1.3));
+
                 }
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
                     }
-                    price.setText(pizza.getPrice() + " $");
+                    price.setText(PriceUtils.formatPrice(pizza.getPrice()));
                 }
             });
             size50.addMouseListener(new MouseAdapter() {
@@ -107,14 +109,14 @@ public class PizzaPanel extends JPanel {
                     if (!buttonPanel.isVisible()) {
                         buttonPanel.setVisible(true);
                     }
-                    price.setText(pizza.getPrice() * 1.5 + " $");
+                    price.setText(PriceUtils.formatPrice(pizza.getPrice() * 1.5));
                 }
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
                     }
-                    price.setText(pizza.getPrice() + " $");
+                    price.setText(PriceUtils.formatPrice(pizza.getPrice()));
                 }
             });
 

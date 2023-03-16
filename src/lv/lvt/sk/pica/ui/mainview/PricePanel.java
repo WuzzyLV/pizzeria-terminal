@@ -1,6 +1,7 @@
 package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.Item;
+import lv.lvt.sk.pica.utils.PriceUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +26,7 @@ public class PricePanel extends JPanel {
         pricePanel.setMaximumSize(new Dimension(200, 100  ));
         pricePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
-        priceLabel = new JLabel(mainView.getCartPrice()+" $");
+        priceLabel = new JLabel(PriceUtils.formatPrice(mainView.getCartPrice()));
         priceLabel.setFont(new Font(priceLabel.getFont().getFontName(), Font.BOLD, 40));
         priceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         priceLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
@@ -60,14 +61,14 @@ public class PricePanel extends JPanel {
     public void setProductLog(ArrayList<Item> log) {
         Object[] logArray = new Object[log.size()];
         for (int i = 0; i < log.size(); i++) {
-            logArray[i] = log.get(i).getName()+" "+log.get(i).getPrice()+" $";
+            logArray[i] = log.get(i).getName()+" "+PriceUtils.formatPrice(log.get(i).getPrice());
         }
         productLog.setListData(logArray);
         productLog.revalidate();
     }
 
     public void setPriceLabel(double price) {
-        priceLabel.setText(price+" $");
+        priceLabel.setText(PriceUtils.formatPrice(price));
         priceLabel.revalidate();
     }
 }

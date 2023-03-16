@@ -2,6 +2,7 @@ package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.extras.Extra;
 import lv.lvt.sk.pica.food.sides.Side;
+import lv.lvt.sk.pica.utils.PriceUtils;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
 import javax.swing.*;
@@ -34,7 +35,7 @@ public class ExtrasPanel extends JPanel {
             infoPanel.add(name);
             infoPanel.add(tops);
 
-            JLabel price = new JLabel(item.getPrice() + " $");
+            JLabel price = new JLabel(PriceUtils.formatPrice(item.getPrice()));
             price.setAlignmentY(Component.CENTER_ALIGNMENT);
 
             //setting fonts
@@ -90,14 +91,14 @@ public class ExtrasPanel extends JPanel {
                     if (!buttonPanel.isVisible()) {
                         buttonPanel.setVisible(true);
                     }
-                    price.setText(item.getPrice() * 1.3 + " $");
+                    price.setText(PriceUtils.formatPrice(item.getPrice() * 1.3));
                 }
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
                     }
-                    price.setText(item.getPrice() + " $");
+                    price.setText(PriceUtils.formatPrice(item.getPrice()));
                 }
             });
             size50.addMouseListener(new MouseAdapter() {
@@ -106,14 +107,14 @@ public class ExtrasPanel extends JPanel {
                     if (!buttonPanel.isVisible()) {
                         buttonPanel.setVisible(true);
                     }
-                    price.setText(item.getPrice() * 1.5 + " $");
+                    price.setText(PriceUtils.formatPrice(item.getPrice() * 1.5));
                 }
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
                     }
-                    price.setText(item.getPrice() + " $");
+                    price.setText(PriceUtils.formatPrice(item.getPrice()));
                 }
             });
 
