@@ -90,6 +90,15 @@ public class MainView extends JPanel {
         pricePanel.setProductLog(cartItems);
     }
 
+    public void newPizza() {
+        viewController.customPizza();
+    }
+    public void removeFromCart(Item item) {
+        cartItems.remove(item);
+        pricePanel.setPriceLabel(getCartPrice());
+        pricePanel.setProductLog(cartItems);
+    }
+
     public void clearCart() {
         cartItems.clear();
         pricePanel.setPriceLabel(getCartPrice());

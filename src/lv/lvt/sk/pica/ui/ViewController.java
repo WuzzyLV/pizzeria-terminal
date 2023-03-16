@@ -1,6 +1,7 @@
 package lv.lvt.sk.pica.ui;
 
 import lv.lvt.sk.pica.food.pizzas.Pizza;
+import lv.lvt.sk.pica.ui.mainview.CustomPizzaPanel;
 import lv.lvt.sk.pica.ui.mainview.MainView;
 import lv.lvt.sk.pica.ui.mainview.MenuItems;
 
@@ -26,6 +27,11 @@ public class ViewController extends JFrame {
     public void showMainView() {
         setContentPane(mainView);
         setVisible(true);
+    }
+
+    public void customPizza() {
+        setContentPane(new CustomPizzaPanel(menuItems));
+        revalidate();
     }
 
     public ArrayList<Pizza> getPizzas() {
