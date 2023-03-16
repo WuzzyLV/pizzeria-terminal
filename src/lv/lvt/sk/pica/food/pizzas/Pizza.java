@@ -14,7 +14,7 @@ public class Pizza extends Item{
     double size=20;
 
     public Pizza(String name) {
-        super(name, 0.0, "", new ImageIcon("./resources/404.png"));
+        super(name, 0.0, "");
     }
     public Pizza(String name, ImageIcon image) {
         super(name, 0.0, "", image);

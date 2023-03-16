@@ -1,6 +1,8 @@
 package lv.lvt.sk.pica.ui.mainview;
 
+import lv.lvt.sk.pica.food.Item;
 import lv.lvt.sk.pica.food.pizzas.Pizza;
+import lv.lvt.sk.pica.food.sides.Side;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
 import javax.swing.*;
@@ -8,43 +10,41 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PizzaPanel extends JPanel {
-
-    public PizzaPanel(MainView mainView,MenuItems menuItems) {
+public class SidesPanel extends JPanel {
+    public SidesPanel(MainView mainView,MenuItems menuItems) {
         this.setLayout(new WrapLayout());
 
-        for (Pizza pizza : menuItems.pizzas) {
-            JPanel currPizzaPanel = new JPanel();
-            currPizzaPanel.setLayout(new BoxLayout(currPizzaPanel, BoxLayout.Y_AXIS));
-            currPizzaPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        for (Side item : menuItems.sides) {
+            JPanel currPanel = new JPanel();
+            currPanel.setLayout(new BoxLayout(currPanel, BoxLayout.Y_AXIS));
+            currPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
             JPanel helperPanel = new JPanel();
             helperPanel.setLayout(new BoxLayout(helperPanel, BoxLayout.X_AXIS));
             helperPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            currPizzaPanel.add(helperPanel);
+            currPanel.add(helperPanel);
 
-            JLabel pizzaImg = new JLabel(pizza.getImage());
-            pizzaImg.setAlignmentY(Component.CENTER_ALIGNMENT);
+            JLabel img = new JLabel(item.getImage());
+            img.setAlignmentY(Component.CENTER_ALIGNMENT);
 
             JPanel infoPanel = new JPanel();
             infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
-            JLabel pizzaName = new JLabel(pizza.getName() + " ");
-            JLabel tops = new JLabel(pizza.getDesc());
+            JLabel name = new JLabel(item.getName() + " ");
+            JLabel tops = new JLabel(item.getDesc());
             tops.setPreferredSize(new Dimension(175, 40));
+            infoPanel.add(name);
+            infoPanel.add(tops);
 
-            JLabel price = new JLabel(pizza.getPrice() + " $");
+            JLabel price = new JLabel(item.getPrice() + " $");
             price.setAlignmentY(Component.CENTER_ALIGNMENT);
 
             //setting fonts
-            Font font = new Font(pizzaName.getFont().getFontName(), Font.BOLD, 20);
-            pizzaName.setFont(font);
+            Font font = new Font(name.getFont().getFontName(), Font.BOLD, 20);
+            name.setFont(font);
             price.setFont(font);
 
-            infoPanel.add(pizzaName);
-            infoPanel.add(tops);
-
-            helperPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add some spacing between the components
-            helperPanel.add(pizzaImg);
+            helperPanel.add(Box.createRigidArea(new Dimension(0, 0))); // Add some spacing between the components
+            helperPanel.add(img);
             helperPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add some spacing between the components
             helperPanel.add(infoPanel);
             helperPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add some spacing between the components
@@ -53,18 +53,18 @@ public class PizzaPanel extends JPanel {
             helperPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
             //currPizzaPanel.setSize(new Dimension(400, pizza.getImage().getIconHeight()));
-            currPizzaPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            currPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
             buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            JButton size20 = new JButton("20 cm");
+            JButton size20 = new JButton("M");
             buttonPanel.add(size20);
-            JButton size30 = new JButton("30 cm");
+            JButton size30 = new JButton("L");
             buttonPanel.add(size30);
-            JButton size50 = new JButton("50 cm");
+            JButton size50 = new JButton("XL");
             buttonPanel.add(size50);
-            currPizzaPanel.add(buttonPanel);
+            currPanel.add(buttonPanel);
             buttonPanel.setVisible(false);
 
             //enter leave listener for whole panel
@@ -79,10 +79,10 @@ public class PizzaPanel extends JPanel {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
                     }
-                    currPizzaPanel.repaint();
+                    currPanel.repaint();
                 }
             };
-            currPizzaPanel.addMouseListener(genericAdapter);
+            currPanel.addMouseListener(genericAdapter);
             size20.addMouseListener(genericAdapter);
             //listener for each buttons to set price etc
             size30.addMouseListener(new MouseAdapter() {
@@ -91,14 +91,14 @@ public class PizzaPanel extends JPanel {
                     if (!buttonPanel.isVisible()) {
                         buttonPanel.setVisible(true);
                     }
-                    price.setText(pizza.getPrice() * 1.3 + " $");
+                    price.setText(item.getPrice() * 1.3 + " $");
                 }
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
                     }
-                    price.setText(pizza.getPrice() + " $");
+                    price.setText(item.getPrice() + " $");
                 }
             });
             size50.addMouseListener(new MouseAdapter() {
@@ -107,43 +107,44 @@ public class PizzaPanel extends JPanel {
                     if (!buttonPanel.isVisible()) {
                         buttonPanel.setVisible(true);
                     }
-                    price.setText(pizza.getPrice() * 1.5 + " $");
+                    price.setText(item.getPrice() * 1.5 + " $");
                 }
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (buttonPanel.isVisible()) {
                         buttonPanel.setVisible(false);
                     }
-                    price.setText(pizza.getPrice() + " $");
+                    price.setText(item.getPrice() + " $");
                 }
             });
 
             size20.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Pizza item = (Pizza) pizza.clone();
+                    Side clickedItem = (Side) item.clone();
                     //dont need to set size because its 20 by default
-                    mainView.addToCart(pizza);
+                    mainView.addToCart(clickedItem);
                 }
             });
             size30.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Pizza item = (Pizza) pizza.clone();
-                    item.setSize(30);
-                    mainView.addToCart(item);
+                    Side clickedItem = (Side) item.clone();
+                    clickedItem.setSize(30);
+                    mainView.addToCart(clickedItem);
                 }
             });
             size50.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Pizza item = (Pizza) pizza.clone();
-                    item.setSize(50);
-                    mainView.addToCart(item);
+                    Side clickedItem = (Side) item.clone();
+                    clickedItem.setSize(50);
+                    mainView.addToCart(clickedItem);
                 }
             });
 
-            this.add(currPizzaPanel);
+            this.add(currPanel);
+
         }
     }
 }

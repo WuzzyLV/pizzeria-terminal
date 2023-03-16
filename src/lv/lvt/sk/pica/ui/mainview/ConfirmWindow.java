@@ -44,6 +44,7 @@ public class ConfirmWindow extends JFrame {
         Button confirmButton = new Button("Confirm");
         confirmButton.addActionListener(e -> {
             OrderManager.addOrder(new Order(nameField.getText(), addressField.getText(), mainView.getCart()));
+            mainView.clearCart();
             dispose();
         });
         panel.add(confirmButton);

@@ -25,6 +25,8 @@ public class MainView extends JPanel {
     JPanel sides;
     JPanel extras;
     JScrollPane pizzaPanelScroll;
+    JScrollPane sidesPanelScroll;
+    JScrollPane extrasPanelScroll;
 
     PricePanel pricePanel;
 
@@ -48,16 +50,21 @@ public class MainView extends JPanel {
 
         pizzaPanel= new PizzaPanel(this, mitems);
         pizzaPanelScroll = new JScrollPane(pizzaPanel);
+        pizzaPanelScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        sides = new JPanel();
-        sides.add(new JLabel("Sides"));
+        sides= new SidesPanel(this, mitems);
+        sidesPanelScroll = new JScrollPane(sides);
+        sidesPanelScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        extras = new JPanel();
-        extras.add(new JLabel("Extras"));
+
+        extras = new ExtrasPanel(this, mitems);
+        extrasPanelScroll = new JScrollPane(extras);
+        extrasPanelScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
 
         menuPanel.addTab("Pizzas", pizzaPanelScroll);
-        menuPanel.addTab("Sides", sides);
-        menuPanel.addTab("Extras", extras);
+        menuPanel.addTab("Sides", sidesPanelScroll);
+        menuPanel.addTab("Extras", extrasPanelScroll);
     }
 
     public ArrayList<Item> getCart() {
@@ -79,6 +86,12 @@ public class MainView extends JPanel {
     }
     public void addToCart(Item item) {
         cartItems.add(item);
+        pricePanel.setPriceLabel(getCartPrice());
+        pricePanel.setProductLog(cartItems);
+    }
+
+    public void clearCart() {
+        cartItems.clear();
         pricePanel.setPriceLabel(getCartPrice());
         pricePanel.setProductLog(cartItems);
     }
