@@ -1,4 +1,4 @@
-package lv.lvt.sk.pica.ui.mainview;
+package lv.lvt.sk.pica.ui;
 
 import lv.lvt.sk.pica.food.Item;
 import lv.lvt.sk.pica.food.extras.Cola;
@@ -55,7 +55,6 @@ public class MenuItems {
         toppings.add(new ChampignonTopping());
         toppings.add(new CheeseTopping());
         toppings.add(new MozzarellaTopping());
-        toppings.add(new PeperoniPizza());
         toppings.add(new RedOnionTopping());
 
 

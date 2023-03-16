@@ -1,6 +1,7 @@
 package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.pizzas.Pizza;
+import lv.lvt.sk.pica.ui.MenuItems;
 import lv.lvt.sk.pica.utils.PriceUtils;
 import lv.lvt.sk.pica.utils.WrapLayout;
 
@@ -11,7 +12,7 @@ import java.awt.event.MouseEvent;
 
 public class PizzaPanel extends JPanel {
 
-    public PizzaPanel(MainView mainView,MenuItems menuItems) {
+    public PizzaPanel(MainView mainView, MenuItems menuItems) {
         this.setLayout(new WrapLayout());
 
         for (Pizza pizza : menuItems.pizzas) {
@@ -254,23 +255,19 @@ public class PizzaPanel extends JPanel {
         size20.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                mainView.newPizza();
+                mainView.viewController.showCustomPizzaView(1);
             }
         });
         size30.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Pizza item = (Pizza) pizza.clone();
-                item.setSize(30);
-                mainView.addToCart(item);
+                mainView.viewController.showCustomPizzaView(1.30);
             }
         });
         size50.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Pizza item = (Pizza) pizza.clone();
-                item.setSize(50);
-                mainView.addToCart(item);
+                mainView.viewController.showCustomPizzaView(1.50);
             }
         });
 
