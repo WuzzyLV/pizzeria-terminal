@@ -2,6 +2,7 @@ package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.Order;
 import lv.lvt.sk.pica.OrderManager;
+import lv.lvt.sk.pica.utils.PriceUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class ConfirmWindow extends JFrame {
         add(panel);
 
         JLabel nameLab = new JLabel("Name:");
-        nameLab.setAlignmentX(Component.LEFT_ALIGNMENT);
+        //nameLab.setAlignmentX(Component.LEFT_ALIGNMENT);
         JTextField nameField = new JTextField(1);
         nameField.setMaximumSize(new Dimension(250,20));
         panel.add(nameLab);
@@ -41,7 +42,9 @@ public class ConfirmWindow extends JFrame {
         panel.add(addressField);
         panel.add(addressCheckBox);
 
-        Button confirmButton = new Button("Confirm");
+        Button confirmButton = new Button(PriceUtils.formatPrice(mainView.getCartPrice()));
+        confirmButton.setBackground(new Color(131, 171, 131));
+        confirmButton.setFont(new Font(nameLab.getFont().getFontName(), Font.BOLD, 40));
         confirmButton.addActionListener(e -> {
             OrderManager.addOrder(new Order(nameField.getText(), addressField.getText(), mainView.getCart()));
             mainView.clearCart();
