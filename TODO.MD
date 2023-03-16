@@ -4,8 +4,9 @@
 - [ ] Serialize orders
 - [ ] Make order history viewable
 - [x] Decimal format for price
-- [ ] Improve Confirm order menu
+- [x] Improve Confirm order menu
 - [x] Add more products
+- [x] Add images
 - [ ] generate the images dynamically
 - [ ] Allow custom pizza
 - [x] Use branches for git
