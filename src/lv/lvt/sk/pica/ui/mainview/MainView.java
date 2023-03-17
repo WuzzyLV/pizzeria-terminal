@@ -1,6 +1,7 @@
 package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.food.Item;
+import lv.lvt.sk.pica.food.pizzas.Delivery;
 import lv.lvt.sk.pica.ui.MenuItems;
 import lv.lvt.sk.pica.ui.ViewController;
 import lv.lvt.sk.pica.utils.WrapLayout;
@@ -25,6 +26,8 @@ public class MainView extends JPanel {
     JScrollPane extrasPanelScroll;
 
     PricePanel pricePanel;
+
+    Delivery delivery = new Delivery();
 
     public MainView(ViewController controller) {
         this.viewController = controller;
@@ -90,6 +93,25 @@ public class MainView extends JPanel {
         cartItems.remove(item);
         pricePanel.setPriceLabel(getCartPrice());
         pricePanel.setProductLog(cartItems);
+    }
+
+    public void addDelivery() {
+        if (!hasDelivery()) {
+            cartItems.add(delivery);
+            pricePanel.setPriceLabel(getCartPrice());
+            pricePanel.setProductLog(cartItems);
+        }
+    }
+    public void removeDelivery() {
+        if (hasDelivery()) {
+            cartItems.remove(delivery);
+            pricePanel.setPriceLabel(getCartPrice());
+            pricePanel.setProductLog(cartItems);
+        }
+    }
+
+    public boolean hasDelivery(){
+        return cartItems.contains(delivery);
     }
 
     public void clearCart() {

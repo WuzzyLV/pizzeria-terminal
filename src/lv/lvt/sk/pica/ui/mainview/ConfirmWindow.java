@@ -32,16 +32,18 @@ public class ConfirmWindow extends JFrame {
         JTextField addressField = new JTextField(1);
         addressField.setMaximumSize(new Dimension(250,20));
         addressField.setEnabled(false);
-        Delivery delivery = new Delivery();
         JCheckBox addressCheckBox = new JCheckBox("Delivery?");
+        if(mainView.hasDelivery()) {
+            addressCheckBox.setSelected(true);
+        }
         addressCheckBox.addActionListener(e -> {
             if (addressCheckBox.isSelected()) {
                 addressField.setEnabled(true);
-                mainView.addToCart(delivery);
+                mainView.addDelivery();
             } else {
                 addressField.setEnabled(false);
                 addressField.setText("");
-                mainView.removeFromCart(delivery);
+                mainView.removeDelivery();
             }
             confirmButton.setLabel(PriceUtils.formatPrice(mainView.getCartPrice()));
         });
