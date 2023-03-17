@@ -1,8 +1,10 @@
 package lv.lvt.sk.pica.ui;
 
+import lv.lvt.sk.pica.Order;
 import lv.lvt.sk.pica.food.pizzas.Pizza;
 import lv.lvt.sk.pica.ui.custompizzaview.CustomPizzaView;
 import lv.lvt.sk.pica.ui.mainview.MainView;
+import lv.lvt.sk.pica.ui.recieptview.ReceiptView;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -29,6 +31,10 @@ public class ViewController extends JFrame {
     }
     public void showCustomPizzaView(double sizeMultiplier) {
         setContentPane(new CustomPizzaView(this, mainView, sizeMultiplier));
+        setVisible(true);
+    }
+    public void showRecieptView(Order order) {
+        setContentPane(new ReceiptView(this, order));
         setVisible(true);
     }
 

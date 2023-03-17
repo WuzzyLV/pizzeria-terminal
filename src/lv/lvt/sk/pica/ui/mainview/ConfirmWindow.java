@@ -54,7 +54,10 @@ public class ConfirmWindow extends JFrame {
         confirmButton.setBackground(new Color(131, 171, 131));
         confirmButton.setFont(new Font(nameLab.getFont().getFontName(), Font.BOLD, 40));
         confirmButton.addActionListener(e -> {
-            OrderManager.addOrder(new Order(nameField.getText(), addressField.getText(), mainView.getCart()));
+            String address = (addressField.getText().equals("")) ? null : addressField.getText();
+            Order order = new Order(nameField.getText(), address, mainView.getCart());
+            OrderManager.addOrder(order);
+            mainView.viewController.showRecieptView(order);
             mainView.clearCart();
             dispose();
         });
