@@ -19,6 +19,7 @@ public class PizzaPanel extends JPanel {
             JPanel currPizzaPanel = new JPanel();
             currPizzaPanel.setLayout(new BoxLayout(currPizzaPanel, BoxLayout.Y_AXIS));
             currPizzaPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            currPizzaPanel.setSize(new Dimension(400, pizza.getImage().getIconHeight()));
 
             JPanel helperPanel = new JPanel();
             helperPanel.setLayout(new BoxLayout(helperPanel, BoxLayout.X_AXIS));
@@ -155,6 +156,8 @@ public class PizzaPanel extends JPanel {
         customPizzaPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         Pizza pizza = new Pizza("Custom pizza");
+        customPizzaPanel.setMinimumSize(new Dimension(400, pizza.getImage().getIconHeight()));
+        customPizzaPanel.setSize(new Dimension(400, pizza.getImage().getIconHeight()));
 
         JPanel helperPanel = new JPanel();
         helperPanel.setLayout(new BoxLayout(helperPanel, BoxLayout.X_AXIS));
