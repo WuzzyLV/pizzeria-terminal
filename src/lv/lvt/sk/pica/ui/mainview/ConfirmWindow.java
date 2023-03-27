@@ -2,11 +2,13 @@ package lv.lvt.sk.pica.ui.mainview;
 
 import lv.lvt.sk.pica.Order;
 import lv.lvt.sk.pica.OrderManager;
+import lv.lvt.sk.pica.food.Item;
 import lv.lvt.sk.pica.food.pizzas.Delivery;
 import lv.lvt.sk.pica.utils.PriceUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ConfirmWindow extends JFrame {
     public ConfirmWindow(MainView mainView) {
@@ -55,11 +57,8 @@ public class ConfirmWindow extends JFrame {
         confirmButton.setFont(new Font(nameLab.getFont().getFontName(), Font.BOLD, 40));
         confirmButton.addActionListener(e -> {
             String address = (addressField.getText().equals("")) ? null : addressField.getText();
-            Order order = new Order(nameField.getText(), address, mainView.getCart());
+            Order order = new Order(nameField.getText(), address, (ArrayList<Item>) mainView.getCart().clone());
             mainView.viewController.getOrderManager().addOrder(order);
-
-            System.out.println("WHEN CLICKED BUY "+mainView.viewController.getOrderManager());
-            mainView.viewController.getOrderManager().print();
 
             mainView.viewController.showRecieptView(order);
             mainView.clearCart();

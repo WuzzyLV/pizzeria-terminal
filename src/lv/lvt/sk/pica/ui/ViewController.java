@@ -32,8 +32,6 @@ public class ViewController extends JFrame {
     }
 
     public void showMainView() {
-        System.out.println("ORDERS WHEN MAIN VIEW IS OPENED "+getOrderManager());
-        getOrderManager().print();
         setContentPane(mainView);
         setVisible(true);
     }

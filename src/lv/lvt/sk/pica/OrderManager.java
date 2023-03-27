@@ -15,8 +15,6 @@ public class OrderManager {
     public void addOrder(Order order) {
         orders.add(order);
 
-        System.out.println("ORDERS AFTER ADDING NEW");
-        print();
         try {
             File file = new File("./logs/"+order.getName()+".txt");
             file.createNewFile();

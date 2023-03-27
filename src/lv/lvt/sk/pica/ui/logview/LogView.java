@@ -6,8 +6,6 @@ import javax.swing.*;
 
 public class LogView {
     public LogView(ViewController controller) {
-        System.out.println("ORDERS WHEN LOG VIEW IS OPENED");
-        controller.getOrderManager().print();
         String[] options = new String[controller.getOrderManager().getOrders().size()];
         for (int i = 0; i < controller.getOrderManager().getOrders().size(); i++) {
             options[i] = controller.getOrderManager().getOrders().get(i).toTitle();
