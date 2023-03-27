@@ -44,13 +44,15 @@ public class ViewController extends JFrame {
     }
 
     public void showLogView() {
+        System.out.println("ORDERS WHEN LOG VIEW IS OPENED");
+        orderManager.print();
         String[] options = new String[orderManager.getOrders().size()];
         for (int i = 0; i < orderManager.getOrders().size(); i++) {
             options[i] = orderManager.getOrders().get(i).toTitle();
         }
         JComboBox comboBox = new JComboBox(options);
-        JOptionPane.showOptionDialog(this, comboBox, "Choose order", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-        if (comboBox.getSelectedIndex() != -1) {
+        int choice = JOptionPane.showOptionDialog(this, comboBox, "Choose order", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+        if (comboBox.getSelectedIndex() != -1 && choice == JOptionPane.OK_OPTION) {
             showRecieptView(orderManager.getOrder(comboBox.getSelectedIndex()));
         }
     }
