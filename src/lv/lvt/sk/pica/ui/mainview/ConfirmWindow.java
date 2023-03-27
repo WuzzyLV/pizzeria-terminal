@@ -58,6 +58,9 @@ public class ConfirmWindow extends JFrame {
             Order order = new Order(nameField.getText(), address, mainView.getCart());
             mainView.viewController.getOrderManager().addOrder(order);
 
+            System.out.println("WHEN CLICKED BUY "+mainView.viewController.getOrderManager());
+            mainView.viewController.getOrderManager().print();
+
             mainView.viewController.showRecieptView(order);
             mainView.clearCart();
             dispose();

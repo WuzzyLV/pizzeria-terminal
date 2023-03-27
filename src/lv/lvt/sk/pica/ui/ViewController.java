@@ -4,6 +4,7 @@ import lv.lvt.sk.pica.Order;
 import lv.lvt.sk.pica.OrderManager;
 import lv.lvt.sk.pica.food.pizzas.Pizza;
 import lv.lvt.sk.pica.ui.custompizzaview.CustomPizzaView;
+import lv.lvt.sk.pica.ui.logview.LogView;
 import lv.lvt.sk.pica.ui.mainview.MainView;
 import lv.lvt.sk.pica.ui.recieptview.ReceiptView;
 
@@ -31,6 +32,8 @@ public class ViewController extends JFrame {
     }
 
     public void showMainView() {
+        System.out.println("ORDERS WHEN MAIN VIEW IS OPENED "+getOrderManager());
+        getOrderManager().print();
         setContentPane(mainView);
         setVisible(true);
     }
@@ -44,17 +47,7 @@ public class ViewController extends JFrame {
     }
 
     public void showLogView() {
-        System.out.println("ORDERS WHEN LOG VIEW IS OPENED");
-        orderManager.print();
-        String[] options = new String[orderManager.getOrders().size()];
-        for (int i = 0; i < orderManager.getOrders().size(); i++) {
-            options[i] = orderManager.getOrders().get(i).toTitle();
-        }
-        JComboBox comboBox = new JComboBox(options);
-        int choice = JOptionPane.showOptionDialog(this, comboBox, "Choose order", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-        if (comboBox.getSelectedIndex() != -1 && choice == JOptionPane.OK_OPTION) {
-            showRecieptView(orderManager.getOrder(comboBox.getSelectedIndex()));
-        }
+        new LogView(this);
     }
 
     public MenuItems getMenuItems() {
