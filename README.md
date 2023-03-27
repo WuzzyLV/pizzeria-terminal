@@ -19,8 +19,8 @@
 - [ ] Make a toString() for item and pizza etc
 - [x] Make order confirm menu
 - [x] Serialize orders
-- [ ] Read Serialized orders
-- [ ] Make order history viewable
+- [x] Read Serialized orders
+- [x] Make order history viewable
 - [x] Decimal format for price
 - [x] Improve Confirm order menu
 - [x] Add more products
