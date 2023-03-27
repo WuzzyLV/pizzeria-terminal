@@ -1,0 +1,1 @@
+Peteris;LVT;3;Peperoni pizza;4.0;<html>Thin crust, Tomato sauce, Cheese, Peperoni</html>;Fries;2.0;Fries with salt;Delivery;2.0;Delivery to an address;8.0

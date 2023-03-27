@@ -70,6 +70,7 @@ public class MainView extends JPanel {
         menuPanel.addChangeListener(e -> {
             if (menuPanel.getSelectedIndex() == 3) {
                 viewController.showLogView();
+                menuPanel.setSelectedIndex(0);
             }
         });
 
