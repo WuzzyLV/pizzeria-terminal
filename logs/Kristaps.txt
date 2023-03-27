@@ -1,0 +1,7 @@
+Order for Kristaps to LVT
+Peperoni pizza (Thin crust, Tomato sauce, Cheese, Peperoni) - 4.0 €
+Custom pizza (Thin crust, Tomato sauce, Cheese, Mozzarella, Red onion, Champignon) - 6.0 €
+Ice Cream (Ice Cream with chocolate) - 2.0 €
+Sprite (Green) - 1.95 €
+Delivery (Delivery to an address) - 2.0 €
+Total: 15.95 €
