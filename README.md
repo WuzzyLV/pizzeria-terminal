@@ -32,5 +32,5 @@
 
 ## BUGS :bug:
 - [x] When clicking on logs and after viewing them you are in logs
-- [ ] When making a new order it doesnt show in logs properly
+- [x] When making a new order it doesnt show in logs properly
   - For some reason when OrderManger is accessed from a different class it shows that the new order has been added but it has no info in it, no items. But when its added to the OrderManger it sees it fine with all the items etc. 
