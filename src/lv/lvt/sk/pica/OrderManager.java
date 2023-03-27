@@ -12,11 +12,9 @@ public class OrderManager {
 
      ArrayList<Order> orders = new ArrayList<>();
 
-    public  void addOrder(Order order) {
+    public void addOrder(Order order) {
         orders.add(order);
 
-        System.out.println("Order added!");
-        print();
         try {
             File file = new File("./logs/"+order.getName()+".txt");
             file.createNewFile();
@@ -38,7 +36,7 @@ public class OrderManager {
         orders.remove(order);
     }
 
-    public  void readOrders() {
+    public void readOrders() {
         File dir = new File("./logs/");
         File[] directoryListing = dir.listFiles();
         for (File child : directoryListing) {
