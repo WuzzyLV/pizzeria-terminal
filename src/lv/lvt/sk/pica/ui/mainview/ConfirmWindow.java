@@ -27,7 +27,7 @@ public class ConfirmWindow extends JFrame {
 
         Button confirmButton = new Button(PriceUtils.formatPrice(mainView.getCartPrice()));
 
-        JLabel addressLabel = new JLabel("Adress:");
+        JLabel addressLabel = new JLabel("Address:");
         addressLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         JTextField addressField = new JTextField(1);
         addressField.setMaximumSize(new Dimension(250,20));
@@ -56,7 +56,8 @@ public class ConfirmWindow extends JFrame {
         confirmButton.addActionListener(e -> {
             String address = (addressField.getText().equals("")) ? null : addressField.getText();
             Order order = new Order(nameField.getText(), address, mainView.getCart());
-            OrderManager.addOrder(order);
+            mainView.viewController.getOrderManager().addOrder(order);
+
             mainView.viewController.showRecieptView(order);
             mainView.clearCart();
             dispose();
