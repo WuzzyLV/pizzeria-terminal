@@ -61,9 +61,19 @@ public class MainView extends JPanel {
         extrasPanelScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 
+
+
         menuPanel.addTab("Pizzas", pizzaPanelScroll);
         menuPanel.addTab("Sides", sidesPanelScroll);
         menuPanel.addTab("Extras", extrasPanelScroll);
+        menuPanel.addTab("Logs", null);
+        menuPanel.addChangeListener(e -> {
+            if (menuPanel.getSelectedIndex() == 3) {
+                viewController.showLogView();
+                menuPanel.setSelectedIndex(0);
+            }
+        });
+
     }
 
     public ArrayList<Item> getCart() {

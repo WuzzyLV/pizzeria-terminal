@@ -29,3 +29,7 @@
 - [x] Allow custom pizza
 - [x] Right click remove from JList
 - [x] Use branches for git
+
+## BUGS :bug:
+- [ ] When clicking on logs and after viewing them you are in logs
+- [ ] When making a new order it doesnt show in logs properly
