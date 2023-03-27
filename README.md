@@ -6,10 +6,10 @@
 - Being able to select multiple sizes 	:tomato:
 - Having the ability to construct a custom pizza :hammer:
 - Deliveries :truck:
-- [Simple order logging system into files](link here to be) :file_folder:
+- [Simple order logging system into files](https://github.com/WuzzyLV/pizzeria-terminal/tree/master/logs) :file_folder:
 
 ## Screenshots :camera:
-![Use of the app](https://i.imgur.com/0Z7Z7Zl.png)
+![Use of the app](https://raw.githubusercontent.com/WuzzyLV/pizzeria-terminal/master/screenshots/screenshots.gif)
 
 
 
